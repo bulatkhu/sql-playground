@@ -1,0 +1,19 @@
+services:
+  db:
+    container_name: database_systems_postgres
+    restart: always
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./database/dumps:/docker-entrypoint-initdb.d
+    image: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=postgres_example
+    ports:
+      - '5432:5432'
+
+volumes:
+  database:
+    name: database_systems_volume
+    driver: local
