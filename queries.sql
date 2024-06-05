@@ -20,7 +20,7 @@ create table orders (
     FOREIGN KEY (customer_id) REFERENCES customers(cid)
 );
 
-alter SEQUENCE orders_order_id_seq RESTART WITH 100;
+alter SEQUENCE orders_order_id_seq RESTART WITH 101;
 
 insert into orders (order_date, customer_id, amount) values
     ('2023-01-10', 1, 250.00),
@@ -28,8 +28,8 @@ insert into orders (order_date, customer_id, amount) values
     ('2023-01-20', 3, 300.00),
     ('2023-01-25', 1, 175.00);
 
--- SELECT * from customers
--- INNER JOIN orders on orders.customer_id=customers.cid;
+SELECT * from customers
+INNER JOIN orders on orders.customer_id=customers.cid;
 -- cid     customer_name   order_id    order_date      customer_id     amount
 -- 1       John Doe        101         2023-01-10      1               250.00
 -- 2       Jane Smith      102         2023-01-15      2               150.00
