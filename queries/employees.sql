@@ -23,12 +23,14 @@ create table employees (
    foreign key (department_id) references departments(id)
 );
 
-insert into employees (first_name, last_name, salary, department_id) values
+insert into employees (first_name, last_name, salary, department_id)
+values
     ('John', 'Doe', 50000, 10),
     ('Jane', 'Smith', 60000, 20),
     ('Bob', 'Johnson', 55000, 10),
     ('Alice', 'Brown', 70000, 20),
-    ('Charlie', 'Davis', 50000, 30);
+    ('Charlie', 'Davis', 50000, 30)
+returning *;
 
 select * from employees
 left join departments d on employees.department_id = d.id;
@@ -43,7 +45,8 @@ begin;
 savepoint before_salary_increase;
 
 select * from employees
-                  left join departments d on employees.department_id = d.id;
+left join departments d on employees.department_id = d.id
+order by employee_id;
 
 update employees
     set salary = salary * 1.1
