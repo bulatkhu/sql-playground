@@ -35,3 +35,21 @@ left join departments d on employees.department_id = d.id;
 -- 4           Alice       Brown       70000   20              20
 -- 2           Jane        Smith       60000   20              20
 -- 5           Charlie     Davis       50000   30              30
+
+begin;
+savepoint before_salary_increase;
+
+select * from employees
+                  left join departments d on employees.department_id = d.id;
+
+update employees
+    set salary = salary * 1.1
+    where department_id = 10;
+
+select * from employees
+                  left join departments d on employees.department_id = d.id;
+
+rollback;
+select * from employees
+                  left join departments d on employees.department_id = d.id;
+commit;
