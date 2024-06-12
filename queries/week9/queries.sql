@@ -27,3 +27,9 @@ inner join album on track.album_id = album.album_id
 inner join artist on album.artist_id = artist.artist_id
 where artist.name = 'Green Day';
 -- 34
+
+-- Frage 10:
+select sum(track.milliseconds) from album
+inner join track on album.album_id = track.album_id
+where track.track_id = 1;
+-- 343719
