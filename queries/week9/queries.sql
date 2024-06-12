@@ -33,3 +33,9 @@ select sum(track.milliseconds) from album
 inner join track on album.album_id = track.album_id
 where track.track_id = 1;
 -- 343719
+
+select album.album_id from album
+join track on album.album_id = track.album_id
+group by album.album_id
+having sum(track.milliseconds) > 10000000;
+-- 10
