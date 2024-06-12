@@ -140,3 +140,35 @@ SELECT COUNT(*)
 FROM playlist_track
 WHERE track_id = 2010;
 -- 4
+
+-- Frage 19
+select count(*) from (
+    select pt90.track_id
+    from playlist p90
+    join playlist_track pt90 on pt90.playlist_id = p90.playlist_id
+    where p90.name = '90’s Music'
+) as p90;
+-- 1477
+
+-- except
+select count(*) from (
+    select playlist_track.track_id
+    from playlist
+    join playlist_track on playlist_track.playlist_id = playlist.playlist_id
+    where playlist.name = 'Grunge'
+ ) as pG;
+-- 15
+
+select count(*)
+from (
+    select pt90.track_id
+    from playlist p90
+    join playlist_track pt90 on pt90.playlist_id = p90.playlist_id
+    where p90.name = '90’s Music'
+    except
+    select playlist_track.track_id
+    from playlist
+    join playlist_track on playlist_track.playlist_id = playlist.playlist_id
+    where playlist.name = 'Grunge'
+) as unique_tracks;
+-- 1462
