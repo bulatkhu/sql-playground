@@ -126,3 +126,17 @@ select name from track;             -- 3503
 select distinct name from track;    -- 3257
 
 select count(distinct name) as unique_track_names from track; --3257
+
+-- Frage 18:
+select * from playlist pl
+join playlist_track pt on pt.playlist_id = pl.playlist_id
+left join track tr on pt.track_id = tr.track_id
+where tr.track_id = 2010;
+-- 4
+
+-- or
+
+SELECT COUNT(*)
+FROM playlist_track
+WHERE track_id = 2010;
+-- 4
