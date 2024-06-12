@@ -172,3 +172,12 @@ from (
     where playlist.name = 'Grunge'
 ) as unique_tracks;
 -- 1462
+
+SELECT DISTINCT title
+FROM track
+JOIN album ON track.album_id = album.album_id
+WHERE track.name = 'Basket Case';
+
+
+SELECT DISTINCT * FROM track NATURAL JOIN album;
+
