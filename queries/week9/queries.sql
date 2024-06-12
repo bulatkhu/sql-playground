@@ -55,3 +55,12 @@ join track t on a.album_id = t.album_id
 group by a.title
 order by avg(t.milliseconds)
 limit 1;
+-- Liszt - 12 Études D'Execution Transcendante
+
+-- Frage 14:
+select ar.name, avg(t.milliseconds)
+from artist ar
+inner join album al on al.artist_id = ar.artist_id
+join track t on t.album_id = al.album_id
+group by ar.name
+order by avg(t.milliseconds);
