@@ -47,3 +47,11 @@ where milliseconds =
       (select max(track.milliseconds) from track);
 -- select * from track
 -- where MAX(track.milliseconds);
+
+-- Frage 13:
+select a.title
+from album a
+join track t on a.album_id = t.album_id
+group by a.title
+order by avg(t.milliseconds)
+limit 1;
