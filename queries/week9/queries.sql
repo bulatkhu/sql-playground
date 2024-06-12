@@ -15,3 +15,8 @@ select * from track where composer = 'Chris Cornell' or composer = 'Kurt Cobain'
 select * from track where track_id = 2512; -- should be counted
 select * from track where composer ILIKE '%Chris Cornell%' and composer not LIKE 'Chris Cornell'; -- should not be counted: 20
 
+-- Frage 8;
+select artist.name
+from album
+inner join artist on artist.artist_id = album.artist_id
+where album.title = 'Ten';
