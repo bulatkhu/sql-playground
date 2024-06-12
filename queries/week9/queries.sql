@@ -34,8 +34,16 @@ inner join track on album.album_id = track.album_id
 where track.track_id = 1;
 -- 343719
 
+-- Frage 11:
 select album.album_id from album
 join track on album.album_id = track.album_id
 group by album.album_id
 having sum(track.milliseconds) > 10000000;
 -- 10
+
+-- Frage 12:
+select * from track
+where milliseconds =
+      (select max(track.milliseconds) from track);
+-- select * from track
+-- where MAX(track.milliseconds);
