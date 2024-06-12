@@ -20,3 +20,10 @@ select artist.name
 from album
 inner join artist on artist.artist_id = album.artist_id
 where album.title = 'Ten';
+
+-- Frage 9:
+select count(*) from track
+inner join album on track.album_id = album.album_id
+inner join artist on album.artist_id = artist.artist_id
+where artist.name = 'Green Day';
+-- 34
