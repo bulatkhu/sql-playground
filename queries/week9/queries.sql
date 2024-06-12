@@ -11,4 +11,7 @@ select * from "artist" where name ILIKE 'Santana%';
 select count(*) as Santanas from "artist" where name ILIKE 'Santana%';
 
 -- Frage 7;
-select count(*) from track where composer = 'Chris Cornell' or composer = 'Kurt Cobain'; -- 49
+select * from track where composer = 'Chris Cornell' or composer = 'Kurt Cobain'; -- 49
+select * from track where track_id = 2512; -- should be counted
+select * from track where composer ILIKE '%Chris Cornell%' and composer not LIKE 'Chris Cornell'; -- should not be counted: 20
+
