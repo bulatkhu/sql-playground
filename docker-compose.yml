@@ -1,4 +1,23 @@
 services:
+  pgWeek9:
+    container_name: uni-pg
+    image: registry.git.noc.ruhr-uni-bochum.de/ubisys-public/database-course-containers/sqlasdql
+    volumes:
+      - uni-db:/var/lib/postgresql/data
+
+  db2:
+    container_name: db2
+    restart: always
+    volumes:
+      - uni-db:/var/lib/postgresql/data
+    image: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=postgres_example
+    ports:
+      - '5432:5432'
+
   db:
     container_name: database_systems_postgres
     restart: always
@@ -17,3 +36,5 @@ volumes:
   database:
     name: database_systems_volume
     driver: local
+  uni-db:
+    name: db_uni_week9
