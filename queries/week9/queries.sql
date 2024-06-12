@@ -120,3 +120,9 @@ FROM
 ORDER BY
     avg_track_length DESC
 LIMIT 1;
+
+-- Frage 17:
+select name from track;             -- 3503
+select distinct name from track;    -- 3257
+
+select count(distinct name) as unique_track_names from track; --3257
